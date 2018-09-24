@@ -1,0 +1,6 @@
+framework module Pods_MVP_API_Sample {
+  umbrella header "Pods-MVP-API-Sample-umbrella.h"
+
+  export *
+  module * { export * }
+}
