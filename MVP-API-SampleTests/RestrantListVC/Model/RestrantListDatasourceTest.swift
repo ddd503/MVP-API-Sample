@@ -11,8 +11,8 @@ import XCTest
 
 final class RestrantListDatasourceTest: XCTestCase {
     
-    let datasource = RestrantListDatasource()
-    var requestDatasourceExpectation: XCTestExpectation?
+    private let datasource = RestrantListDatasource()
+    private var requestDatasourceExpectation: XCTestExpectation?
     
     override func setUp() {
         super.setUp()

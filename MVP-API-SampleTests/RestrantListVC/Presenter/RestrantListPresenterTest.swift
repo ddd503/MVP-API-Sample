@@ -11,8 +11,9 @@ import XCTest
 
 final class RestrantListPresenterTest: XCTestCase, RestrantListPresenterInterface {
    
-    let datasource = RestrantListDatasource()
-    
+   private let datasource = RestrantListDatasource()
+    private var restrantListPresenterExpectation: XCTestExpectation?
+
     override func setUp() {
         super.setUp()
     }
@@ -45,6 +46,49 @@ final class RestrantListPresenterTest: XCTestCase, RestrantListPresenterInterfac
     
     func isAbleAddRequest(totalHitPageCount: Int, offsetPageCount: Int, hitRecordCount: Int) -> Bool {
         return totalHitPageCount > offsetPageCount * hitRecordCount
+    }
+    
+    func test_レストラン検索APIからのレスポンスをハンドリングするテスト() {
+        self.restrantListPresenterExpectation = self.expectation(description: "requestDatasource_firstRequest")
+        self.datasource.delegate = self
+        // 初回表示時のAPIアクセス
+        self.datasource.requestDatasource(areaCode: "AREAL2101", offsetPageCount: 1, isAddRequest: false)
+        // 完了宣言後走る
+        self.waitForExpectations(timeout: 10) { [weak self] error in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+            } else {
+                self?.restrantListPresenterExpectation = self?.expectation(description: "requestDatasource_additionalRequest")
+                self?.datasource.requestDatasource(areaCode: "AREAL2101", offsetPageCount: 2, isAddRequest: true)
+                self?.waitForExpectations(timeout: 10, handler: nil)
+            }
+        }
+    }
+    
+}
+
+extension RestrantListPresenterTest: RestrantListDatasourceDelegate {
+    
+    func receivedDatasource(data: ResrantData) {
+        self.restrantListPresenterExpectation?.fulfill()
+        XCTAssertNotNil(data.info)
+    }
+    
+    func receivedAdditionalDatasource(data: ResrantData) {
+        self.restrantListPresenterExpectation?.fulfill()
+        XCTAssertNotNil(data.info)
+    }
+    
+    func receivedErrorResponse(error: Error, isAddRequest: Bool) {
+        XCTAssert(true)
+    }
+    
+    func offlineError(isAddRequest: Bool) {
+        XCTAssert(true)
+    }
+    
+    func decodeError(error: Error, isAddRequest: Bool) {
+        XCTAssert(true)
     }
     
 }

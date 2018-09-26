@@ -11,8 +11,8 @@ import XCTest
 
 final class AreaSearchPresenterTest: XCTestCase {
     
-    var areaSearchPresenterExpectation: XCTestExpectation?
-    let datasource = AreaSearchViewDatasource()
+    private var areaSearchPresenterExpectation: XCTestExpectation?
+    private let datasource = AreaSearchViewDatasource()
     
     override func setUp() {
         super.setUp()

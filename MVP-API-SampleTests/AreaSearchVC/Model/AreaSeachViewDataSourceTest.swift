@@ -11,7 +11,7 @@ import XCTest
 
 final class AreaSeachViewDataSourceTest: XCTestCase {
     
-    var requestDatasourceExpectation: XCTestExpectation?
+    private var requestDatasourceExpectation: XCTestExpectation?
 
     override func setUp() {
         super.setUp()
