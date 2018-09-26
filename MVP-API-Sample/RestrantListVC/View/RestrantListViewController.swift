@@ -31,7 +31,7 @@ final class RestrantListViewController: UIViewController {
         return String(describing: self)
     }
     
-    var presenter: RestrantListPresenter!
+    private var presenter: RestrantListPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +39,7 @@ final class RestrantListViewController: UIViewController {
     }
     
     func initPresenter(areaInfo: AreaInfo) {
-        self.presenter = RestrantListPresenter(interface: self)
-        self.presenter.areaCode = areaInfo.code
-        self.presenter.areaName = areaInfo.name
+        self.presenter = RestrantListPresenter(interface: self, areaInfo: areaInfo)
     }
     
 }

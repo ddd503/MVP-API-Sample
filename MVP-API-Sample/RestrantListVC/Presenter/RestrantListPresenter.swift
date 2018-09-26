@@ -52,13 +52,13 @@ final class RestrantListPresenter: RestrantListPresenterInterface {
     /// Viewクラスから受けたアクションをハンドリングするインターフェース
     private var interface: RestrantListInterface?
     /// データソース保持用、データ更新に合わせて画面を更新する
-    var restrantList = [RestrantInfo]()
+    private (set) var restrantList = [RestrantInfo]()
     // 検索の際に投げるパラメータ
-    var areaCode = ""
+    private (set) var areaCode = ""
     private var offsetPageCount = 1
     // 表示情報の管理
     private var hitRecordCount = 0
-    var areaName = ""
+    private (set) var areaName = ""
     private var totalHitPageCount = 0 {
         didSet {
             if !areaName.isEmpty {
@@ -72,9 +72,11 @@ final class RestrantListPresenter: RestrantListPresenterInterface {
     /// 初期化処理
     ///
     /// - Parameter interface: RestrantListInterfaceに準拠したVC(ハンドリング先)
-    init(interface: RestrantListInterface) {
+    init(interface: RestrantListInterface, areaInfo: AreaInfo) {
         self.interface = interface
         self.datasource.delegate = self
+        self.areaCode = areaInfo.code
+        self.areaName = areaInfo.name
     }
     
     /// APIリクエスト

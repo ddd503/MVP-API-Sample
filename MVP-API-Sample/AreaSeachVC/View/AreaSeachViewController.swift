@@ -17,7 +17,7 @@ final class AreaSeachViewController: UIViewController {
         }
     }
     
-    var presenter: AreaSearchPresenter!
+    private var presenter: AreaSearchPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()

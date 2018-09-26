@@ -21,7 +21,7 @@ final class AreaSearchPresenter {
     /// Viewクラスから受けたアクションをハンドリングするインターフェース
     private var interface: AreaListInterface?
     /// データソース保持用、データ更新に合わせて画面を更新する
-    var areaList = [AreaInfo]() {
+    private (set) var areaList = [AreaInfo]() {
         didSet {
             self.interface?.reload()
         }
