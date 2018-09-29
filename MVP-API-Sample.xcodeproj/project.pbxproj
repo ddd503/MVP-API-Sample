@@ -10,6 +10,8 @@
 		45173919215D342C005E0B79 /* AreaSeachViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45173918215D342C005E0B79 /* AreaSeachViewControllerTest.swift */; };
 		4517391C215F506C005E0B79 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517391B215F506C005E0B79 /* BasePresenter.swift */; };
 		45173920215F6007005E0B79 /* ViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517391F215F6007005E0B79 /* ViewControllerBuilder.swift */; };
+		45173923215FA165005E0B79 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45173921215FA165005E0B79 /* NVActivityIndicatorView.framework */; };
+		45173924215FA165005E0B79 /* NVActivityIndicatorViewAppExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45173922215FA165005E0B79 /* NVActivityIndicatorViewAppExtension.framework */; };
 		4537431921564D7600C00C0E /* ReloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537431721564D7600C00C0E /* ReloadView.swift */; };
 		4537431A21564D7600C00C0E /* ReloadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4537431821564D7600C00C0E /* ReloadView.xib */; };
 		4537431C21574A8700C00C0E /* Int+Grouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537431B21574A8700C00C0E /* Int+Grouping.swift */; };
@@ -59,6 +61,8 @@
 		45173918215D342C005E0B79 /* AreaSeachViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSeachViewControllerTest.swift; sourceTree = "<group>"; };
 		4517391B215F506C005E0B79 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		4517391F215F6007005E0B79 /* ViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerBuilder.swift; sourceTree = "<group>"; };
+		45173921215FA165005E0B79 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
+		45173922215FA165005E0B79 /* NVActivityIndicatorViewAppExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorViewAppExtension.framework; path = Carthage/Build/iOS/NVActivityIndicatorViewAppExtension.framework; sourceTree = "<group>"; };
 		4537431721564D7600C00C0E /* ReloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadView.swift; sourceTree = "<group>"; };
 		4537431821564D7600C00C0E /* ReloadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReloadView.xib; sourceTree = "<group>"; };
 		4537431B21574A8700C00C0E /* Int+Grouping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Grouping.swift"; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45173923215FA165005E0B79 /* NVActivityIndicatorView.framework in Frameworks */,
+				45173924215FA165005E0B79 /* NVActivityIndicatorViewAppExtension.framework in Frameworks */,
 				45EE9E7921554C8B0091230C /* Kingfisher.framework in Frameworks */,
 				45EE9E7A21554C8B0091230C /* Alamofire.framework in Frameworks */,
 				902CE885E322050D475762FA /* Pods_MVP_API_Sample.framework in Frameworks */,
@@ -158,15 +164,6 @@
 			children = (
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		4537432121577A6C00C00C0E /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				45EE9E7E21554DEA0091230C /* DTO */,
-				45EE9E6A2155417B0091230C /* AreaSeachViewDatasource.swift */,
-			);
-			path = JSON;
 			sourceTree = "<group>";
 		};
 		453743262157981300C00C0E /* Helper */ = {
@@ -334,7 +331,8 @@
 		45EE9E5F21553F750091230C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4537432121577A6C00C00C0E /* JSON */,
+				45EE9E8021554E0C0091230C /* AreaData.swift */,
+				45EE9E6A2155417B0091230C /* AreaSeachViewDatasource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -363,7 +361,8 @@
 		45EE9E6221553FA90091230C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				45EE9E8421555EC80091230C /* API */,
+				45EE9E8221554E1B0091230C /* ResrantData.swift */,
+				45EE9E72215542090091230C /* RestrantListDatasource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -371,6 +370,7 @@
 		45EE9E69215541060091230C /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				45EE9E8521555ED40091230C /* RequestOption.swift */,
 				45EE9E6C2155418B0091230C /* APIClient.swift */,
 				4537431B21574A8700C00C0E /* Int+Grouping.swift */,
 				4537432421577C6E00C00C0E /* UIAlertController+Present.swift */,
@@ -381,38 +381,14 @@
 		45EE9E7621554C8A0091230C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				45173921215FA165005E0B79 /* NVActivityIndicatorView.framework */,
+				45173922215FA165005E0B79 /* NVActivityIndicatorViewAppExtension.framework */,
 				45EE9E7821554C8B0091230C /* Alamofire.framework */,
 				45EE9E7721554C8B0091230C /* Kingfisher.framework */,
 				8B5BE34E1A835F191FD28C51 /* Pods_MVP_API_Sample.framework */,
 				6D8138DAC5B9E80D115226CF /* Pods_MVP_API_SampleTests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		45EE9E7E21554DEA0091230C /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-				45EE9E8021554E0C0091230C /* AreaData.swift */,
-			);
-			path = DTO;
-			sourceTree = "<group>";
-		};
-		45EE9E7F21554DF40091230C /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-				45EE9E8221554E1B0091230C /* ResrantData.swift */,
-			);
-			path = DTO;
-			sourceTree = "<group>";
-		};
-		45EE9E8421555EC80091230C /* API */ = {
-			isa = PBXGroup;
-			children = (
-				45EE9E7F21554DF40091230C /* DTO */,
-				45EE9E8521555ED40091230C /* RequestOption.swift */,
-				45EE9E72215542090091230C /* RestrantListDatasource.swift */,
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		A3A3B339A89413D58762CD3F /* Pods */ = {
@@ -540,6 +516,8 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/NVActivityIndicatorView.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/NVActivityIndicatorViewAppExtension.framework",
 			);
 			outputPaths = (
 			);
