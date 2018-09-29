@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
-final class RestrantListViewController: UIViewController {
+final class RestrantListViewController: UIViewController, NVActivityIndicatorViewable {
     
     @IBOutlet weak var restrantListTableView: UITableView! {
         didSet {
+            // テーブルビューの各種設定
             restrantListTableView.delegate = self
             restrantListTableView.dataSource = self
             restrantListTableView.register(UINib(nibName: RestrantInfoCell.identifier, bundle: nil),
@@ -42,12 +44,12 @@ final class RestrantListViewController: UIViewController {
 
 extension RestrantListViewController: RestrantListInterface {
     
-    // 画面更新
+    /// 画面更新
     func reload() {
         self.restrantListTableView.reloadData()
     }
     
-    // 追加取得
+    /// 追加取得
     func addRequestApi() {
         self.presenter.requestAddDatasource()
     }
@@ -64,20 +66,30 @@ extension RestrantListViewController: RestrantListInterface {
         alert.present()
     }
     
-    // インジケーター表示の変更
-    func updateIndicator(isHidden: Bool) {
+    /// 初回取得時用のインジケーターのアニメーション開始
+    func startIndicator() {
+        startAnimating(message: "データ取得中", type: .pacman)
+    }
+    
+    /// 初回取得時用のインジケーターのアニメーション終了
+    func stopIndicator() {
+        stopAnimating()
+    }
+    
+    /// 追加取得インジケーター表示の変更
+    func updateAdditionalIndicator(isHidden: Bool) {
         // あえて強制アンラップ(失敗時にクラッシュさせたい)
         let reloadView = self.restrantListTableView.tableFooterView as! ReloadView
         reloadView.indicator.isHidden = isHidden
         reloadView.frame.size.height = isHidden ? 0 : 50
     }
     
-    // タイトルの更新
+    /// タイトルの更新
     func updateTitle(title: String) {
         self.navigationItem.title = title
     }
     
-    // 前の画面に戻る
+    /// 前の画面に戻る
     func dismiss() {
         self.navigationController?.popViewController(animated: true)
     }

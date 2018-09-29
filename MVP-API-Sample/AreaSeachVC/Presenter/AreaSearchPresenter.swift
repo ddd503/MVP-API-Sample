@@ -18,7 +18,7 @@ protocol AreaListInterface: class {
 final class AreaSearchPresenter: BasePresenter {
     /// アクセスするModelクラス
     private let datasource = AreaSearchViewDatasource()
-    /// Viewクラスから受けたアクションをハンドリングするインターフェース(VCを参照している)
+    /// Viewクラスから受けたアクションをハンドリングするインターフェース（VCを参照しているためweakにする）
     weak var interface: AreaListInterface?
     /// データソース保持用、データ更新に合わせて画面を更新する
     private (set) var areaList = [AreaInfo]() {
@@ -30,6 +30,11 @@ final class AreaSearchPresenter: BasePresenter {
     /// 初期化処理
     init() {
         self.datasource.delegate = self
+    }
+    
+    /// presenter側のViewインスタンスの破棄
+    deinit {
+        destroyInterface()
     }
     
     /// API通信処理を呼び出す

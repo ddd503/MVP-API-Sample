@@ -15,14 +15,19 @@ protocol RestrantListInterface: class {
     func addRequestApi()
     /// エラー表示
     func errorAlert(message: String, completionHandler: ((Any) -> ())?)
-    /// インジケーターの表示非表示
-    func updateIndicator(isHidden: Bool)
+    /// 取得時のインジケーターの表示開始(ライブラリ仕様)
+    func startIndicator()
+    /// 取得時のインジケーターの表示終了(ライブラリ仕様)
+    func stopIndicator()
+    /// 追加取得インジケーターの表示非表示
+    func updateAdditionalIndicator(isHidden: Bool)
     /// ナビバータイトルの更新
     func updateTitle(title: String)
     /// 前画面に戻る
     func dismiss()
 }
 
+/// テスト用に切り出し
 protocol RestrantListPresenterInterface: class {
     /// テーブルビューの一番下までスクロールしたかどうか
     ///
@@ -49,7 +54,7 @@ protocol RestrantListPresenterInterface: class {
 final class RestrantListPresenter: BasePresenter, RestrantListPresenterInterface {
     /// アクセスするModelクラス
     private let datasource = RestrantListDatasource()
-    /// Viewクラスから受けたアクションをハンドリングするインターフェース（VCを参照している）
+    /// Viewクラスから受けたアクションをハンドリングするインターフェース（VCを参照しているためweakにする）
     weak var interface: RestrantListInterface?
     /// データソース保持用、データ更新に合わせて画面を更新する
     private (set) var restrantList = [RestrantInfo]()
@@ -72,9 +77,15 @@ final class RestrantListPresenter: BasePresenter, RestrantListPresenterInterface
         self.datasource.delegate = self
     }
     
+    /// presenter側のViewインスタンスの破棄
+    deinit {
+        destroyInterface()
+    }
+    
     /// APIリクエスト
     func requestDatasource() {
         self.isLoading = true
+        self.interface?.startIndicator()
         self.datasource.requestDatasource(areaCode: areaInfo.code,
                                           offsetPageCount: offsetPageCount,
                                           isAddRequest: false)
@@ -140,7 +151,7 @@ final class RestrantListPresenter: BasePresenter, RestrantListPresenterInterface
     ///
     /// - Parameter isHidden: true 非表示, false 表示
     private func updateAddRequestIndicatorStatus(isHidden: Bool) {
-        self.interface?.updateIndicator(isHidden: isHidden)
+        self.interface?.updateAdditionalIndicator(isHidden: isHidden)
     }
     
 }
@@ -152,6 +163,7 @@ extension RestrantListPresenter: RestrantListDatasourceDelegate {
         self.updateCount(data: data)
         self.restrantList.append(contentsOf: data.info)
         self.interface?.reload()
+        self.interface?.stopIndicator()
     }
     
     func receivedAdditionalDatasource(data: ResrantData) {
@@ -168,6 +180,7 @@ extension RestrantListPresenter: RestrantListDatasourceDelegate {
         if !isAddRequest {
             self.interface?.errorAlert(message: "店舗情報の取得に失敗しました。") { [weak self] _ in
                 self?.isLoading = false
+                self?.interface?.stopIndicator()
                 self?.interface?.dismiss()
             }
         }
@@ -175,6 +188,8 @@ extension RestrantListPresenter: RestrantListDatasourceDelegate {
     
     func offlineError(isAddRequest: Bool) {
         self.updateAddRequestIndicatorStatus(isHidden: true)
+        // 初回取得時のみそれ用のインジケーターを止める
+        isAddRequest ? nil : self.interface?.stopIndicator()
         // アラート表示は確定
         self.interface?.errorAlert(message: "通信環境が良い場所で再度お試しください。") { [weak self] _ in
             self?.isLoading = false
@@ -188,6 +203,7 @@ extension RestrantListPresenter: RestrantListDatasourceDelegate {
         if !isAddRequest {
             self.interface?.errorAlert(message: "店舗情報の取得に失敗しました。") { [weak self] _ in
                 self?.isLoading = false
+                self?.interface?.stopIndicator()
                 self?.interface?.dismiss()
             }
         }
