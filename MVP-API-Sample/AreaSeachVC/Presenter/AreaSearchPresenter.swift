@@ -18,8 +18,8 @@ protocol AreaListInterface: class {
 final class AreaSearchPresenter {
     /// アクセスするModelクラス
     private let datasource = AreaSearchViewDatasource()
-    /// Viewクラスから受けたアクションをハンドリングするインターフェース
-    private var interface: AreaListInterface?
+    /// Viewクラスから受けたアクションをハンドリングするインターフェース(VCを参照している)
+    private weak var interface: AreaListInterface?
     /// データソース保持用、データ更新に合わせて画面を更新する
     private (set) var areaList = [AreaInfo]() {
         didSet {

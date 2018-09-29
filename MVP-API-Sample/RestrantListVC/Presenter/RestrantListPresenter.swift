@@ -49,8 +49,8 @@ protocol RestrantListPresenterInterface: class {
 final class RestrantListPresenter: RestrantListPresenterInterface {
     /// アクセスするModelクラス
     private let datasource = RestrantListDatasource()
-    /// Viewクラスから受けたアクションをハンドリングするインターフェース
-    private var interface: RestrantListInterface?
+    /// Viewクラスから受けたアクションをハンドリングするインターフェース（VCを参照している）
+    private weak var interface: RestrantListInterface?
     /// データソース保持用、データ更新に合わせて画面を更新する
     private (set) var restrantList = [RestrantInfo]()
     // 検索の際に投げるパラメータ
