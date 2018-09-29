@@ -46,23 +46,21 @@ protocol RestrantListPresenterInterface: class {
                           hitRecordCount: Int) -> Bool
 }
 
-final class RestrantListPresenter: RestrantListPresenterInterface {
+final class RestrantListPresenter: BasePresenter, RestrantListPresenterInterface {
     /// アクセスするModelクラス
     private let datasource = RestrantListDatasource()
     /// Viewクラスから受けたアクションをハンドリングするインターフェース（VCを参照している）
-    private weak var interface: RestrantListInterface?
+    weak var interface: RestrantListInterface?
     /// データソース保持用、データ更新に合わせて画面を更新する
     private (set) var restrantList = [RestrantInfo]()
-    // 検索の際に投げるパラメータ
-    private (set) var areaCode = ""
+    // API関連パラメータの管理
+    var areaInfo = AreaInfo()
     private var offsetPageCount = 1
-    // 表示情報の管理
     private var hitRecordCount = 0
-    private (set) var areaName = ""
     private var totalHitPageCount = 0 {
         didSet {
-            if !areaName.isEmpty {
-                self.interface?.updateTitle(title: "\(areaName)の飲食店 \(totalHitPageCount.separatorComma)件")
+            if !areaInfo.name.isEmpty {
+                self.interface?.updateTitle(title: "\(areaInfo.name)の飲食店 \(totalHitPageCount.separatorComma)件")
             }
         }
     }
@@ -70,19 +68,16 @@ final class RestrantListPresenter: RestrantListPresenterInterface {
     private var isLoading = false
     
     /// 初期化処理
-    ///
-    /// - Parameter interface: RestrantListInterfaceに準拠したVC(ハンドリング先)
-    init(interface: RestrantListInterface, areaInfo: AreaInfo) {
-        self.interface = interface
+    init() {
         self.datasource.delegate = self
-        self.areaCode = areaInfo.code
-        self.areaName = areaInfo.name
     }
     
     /// APIリクエスト
     func requestDatasource() {
         self.isLoading = true
-        self.datasource.requestDatasource(areaCode: areaCode, offsetPageCount: offsetPageCount, isAddRequest: false)
+        self.datasource.requestDatasource(areaCode: areaInfo.code,
+                                          offsetPageCount: offsetPageCount,
+                                          isAddRequest: false)
     }
     
     /// API追加リクエスト
@@ -90,7 +85,9 @@ final class RestrantListPresenter: RestrantListPresenterInterface {
         self.isLoading = true
         self.updateAddRequestIndicatorStatus(isHidden: false)
         self.addOffsetPageCount()
-        self.datasource.requestDatasource(areaCode: areaCode, offsetPageCount: offsetPageCount, isAddRequest: true)
+        self.datasource.requestDatasource(areaCode: areaInfo.code,
+                                          offsetPageCount: offsetPageCount,
+                                          isAddRequest: true)
     }
     
     /// 検索開始ページ位置を更新する（追加）

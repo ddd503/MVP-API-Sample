@@ -11,7 +11,7 @@ import UIKit
 extension UIAlertController {
     /// 表示中の画面にアラートを出す
     func present() {
-        if let topViewController = ViewControllerManager.getTopViewController() {
+        if let topViewController = ViewControllerBuilder.topVC() {
             // 二重表示防止のため、最前面がAlertの場合はreturnする
             guard !(topViewController is UIAlertController) else { return }
             topViewController.present(self, animated: true)

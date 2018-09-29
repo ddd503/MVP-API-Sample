@@ -15,11 +15,11 @@ protocol AreaListInterface: class {
     func transitionToRestrantSearchVC(areaInfo: AreaInfo)
 }
 
-final class AreaSearchPresenter {
+final class AreaSearchPresenter: BasePresenter {
     /// アクセスするModelクラス
     private let datasource = AreaSearchViewDatasource()
     /// Viewクラスから受けたアクションをハンドリングするインターフェース(VCを参照している)
-    private weak var interface: AreaListInterface?
+    weak var interface: AreaListInterface?
     /// データソース保持用、データ更新に合わせて画面を更新する
     private (set) var areaList = [AreaInfo]() {
         didSet {
@@ -28,10 +28,7 @@ final class AreaSearchPresenter {
     }
     
     /// 初期化処理
-    ///
-    /// - Parameter areaListInterface: アクションを受けるViewクラス
-    init(areaListInterface: AreaListInterface) {
-        self.interface = areaListInterface
+    init() {
         self.datasource.delegate = self
     }
     

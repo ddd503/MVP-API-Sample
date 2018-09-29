@@ -31,15 +31,11 @@ final class RestrantListViewController: UIViewController {
         return String(describing: self)
     }
     
-    private var presenter: RestrantListPresenter!
+    var presenter: RestrantListPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presenter.requestDatasource()
-    }
-    
-    func initPresenter(areaInfo: AreaInfo) {
-        self.presenter = RestrantListPresenter(interface: self, areaInfo: areaInfo)
     }
     
 }
@@ -107,10 +103,10 @@ extension RestrantListViewController: UITableViewDataSource {
 extension RestrantListViewController: UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.presenter.didScrollTableView(offsetY: self.restrantListTableView.contentOffset.y,
-                                          contentSize: self.restrantListTableView.contentSize.height,
-                                          height: self.restrantListTableView.frame.size.height,
-                                          isDragging: self.restrantListTableView.isDragging)
+        self.presenter.didScrollTableView(offsetY: scrollView.contentOffset.y,
+                                          contentSize: scrollView.contentSize.height,
+                                          height: scrollView.frame.size.height,
+                                          isDragging: scrollView.isDragging)
     }
     
 }

@@ -17,11 +17,10 @@ final class AreaSeachViewController: UIViewController {
         }
     }
     
-    private var presenter: AreaSearchPresenter!
+    var presenter: AreaSearchPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter = self.initPresenter(vc: self)
         self.presenter.requestDataSource()
     }
     
@@ -30,13 +29,6 @@ final class AreaSeachViewController: UIViewController {
         if let indexPathForSelectedRow = areaListTableView.indexPathForSelectedRow {
             areaListTableView.deselectRow(at: indexPathForSelectedRow, animated: true)
         }
-    }
-    
-    /// Presenterを用意（presenter側のデリゲートを受け取るためVCを渡す）
-    ///
-    /// - Parameter vc: AreaListInterfaceに準拠したVC
-    func initPresenter(vc: AreaListInterface) -> AreaSearchPresenter {
-        return AreaSearchPresenter(areaListInterface: vc)
     }
     
 }
@@ -52,12 +44,7 @@ extension AreaSeachViewController: AreaListInterface {
     ///
     /// - Parameter areaInfo: レストラン一覧取得に必要な情報
     func transitionToRestrantSearchVC(areaInfo: AreaInfo) {
-        guard let restrantListViewController = UIStoryboard(name: "RestrantListViewController", bundle: nil)
-            .instantiateInitialViewController() as? RestrantListViewController else {
-                return
-        }
-        restrantListViewController.initPresenter(areaInfo: areaInfo)
-        self.navigationController?.pushViewController(restrantListViewController, animated: true)
+        self.navigationController?.pushViewController(ViewControllerBuilder.buildRestrantListVC(areaInfo: areaInfo), animated: true)
     }
     
 }

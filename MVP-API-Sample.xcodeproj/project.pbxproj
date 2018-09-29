@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		45173919215D342C005E0B79 /* AreaSeachViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45173918215D342C005E0B79 /* AreaSeachViewControllerTest.swift */; };
+		4517391C215F506C005E0B79 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517391B215F506C005E0B79 /* BasePresenter.swift */; };
+		45173920215F6007005E0B79 /* ViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517391F215F6007005E0B79 /* ViewControllerBuilder.swift */; };
 		4537431921564D7600C00C0E /* ReloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537431721564D7600C00C0E /* ReloadView.swift */; };
 		4537431A21564D7600C00C0E /* ReloadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4537431821564D7600C00C0E /* ReloadView.xib */; };
 		4537431C21574A8700C00C0E /* Int+Grouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537431B21574A8700C00C0E /* Int+Grouping.swift */; };
-		4537432321577BAC00C00C0E /* ViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537432221577BAC00C00C0E /* ViewControllerManager.swift */; };
 		4537432521577C6E00C00C0E /* UIAlertController+Present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537432421577C6E00C00C0E /* UIAlertController+Present.swift */; };
 		4537432C2157993C00C00C0E /* AreaSeachViewDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537432B2157993C00C00C0E /* AreaSeachViewDataSourceTest.swift */; };
 		4537432F2157A6F800C00C0E /* AreaSearchPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537432E2157A6F800C00C0E /* AreaSearchPresenterTest.swift */; };
@@ -56,10 +57,11 @@
 		1931E2C30282EA134CF7EED0 /* Pods-MVP-API-SampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVP-API-SampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVP-API-SampleTests/Pods-MVP-API-SampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		42E683F934E8474E2A863012 /* Pods-MVP-API-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVP-API-Sample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVP-API-Sample/Pods-MVP-API-Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		45173918215D342C005E0B79 /* AreaSeachViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSeachViewControllerTest.swift; sourceTree = "<group>"; };
+		4517391B215F506C005E0B79 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
+		4517391F215F6007005E0B79 /* ViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerBuilder.swift; sourceTree = "<group>"; };
 		4537431721564D7600C00C0E /* ReloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadView.swift; sourceTree = "<group>"; };
 		4537431821564D7600C00C0E /* ReloadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReloadView.xib; sourceTree = "<group>"; };
 		4537431B21574A8700C00C0E /* Int+Grouping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Grouping.swift"; sourceTree = "<group>"; };
-		4537432221577BAC00C00C0E /* ViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerManager.swift; sourceTree = "<group>"; };
 		4537432421577C6E00C00C0E /* UIAlertController+Present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Present.swift"; sourceTree = "<group>"; };
 		4537432A2157993B00C00C0E /* MVP-API-SampleTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MVP-API-SampleTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		4537432B2157993C00C00C0E /* AreaSeachViewDataSourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSeachViewDataSourceTest.swift; sourceTree = "<group>"; };
@@ -119,6 +121,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4517391A215F5033005E0B79 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4517391B215F506C005E0B79 /* BasePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4517391D215F5FF5005E0B79 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4517391E215F5FFB005E0B79 /* Builder */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4517391E215F5FFB005E0B79 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				4517391F215F6007005E0B79 /* ViewControllerBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
 		4536C01B21594C9E0063709E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +252,8 @@
 		45EE9E3821553E510091230C /* MVP-API-Sample */ = {
 			isa = PBXGroup;
 			children = (
+				4517391D215F5FF5005E0B79 /* View */,
+				4517391A215F5033005E0B79 /* Presenter */,
 				45EE9E5C21553E7B0091230C /* AreaSeachVC */,
 				45EE9E5B21553E6E0091230C /* RestrantListVC */,
 				45EE9E69215541060091230C /* Helper */,
@@ -345,7 +373,6 @@
 			children = (
 				45EE9E6C2155418B0091230C /* APIClient.swift */,
 				4537431B21574A8700C00C0E /* Int+Grouping.swift */,
-				4537432221577BAC00C00C0E /* ViewControllerManager.swift */,
 				4537432421577C6E00C00C0E /* UIAlertController+Present.swift */,
 			);
 			path = Helper;
@@ -583,11 +610,13 @@
 			files = (
 				45EE9E73215542090091230C /* RestrantListDatasource.swift in Sources */,
 				45EE9E8321554E1B0091230C /* ResrantData.swift in Sources */,
+				4517391C215F506C005E0B79 /* BasePresenter.swift in Sources */,
 				4537431C21574A8700C00C0E /* Int+Grouping.swift in Sources */,
 				4537431921564D7600C00C0E /* ReloadView.swift in Sources */,
 				45EE9E64215540310091230C /* AreaSeachViewController.swift in Sources */,
 				45EE9E68215540C40091230C /* AreaSearchPresenter.swift in Sources */,
 				45EE9E6F215541D40091230C /* RestrantListViewController.swift in Sources */,
+				45173920215F6007005E0B79 /* ViewControllerBuilder.swift in Sources */,
 				45EE9E3A21553E510091230C /* AppDelegate.swift in Sources */,
 				4537432521577C6E00C00C0E /* UIAlertController+Present.swift in Sources */,
 				45EE9E752155421A0091230C /* RestrantListPresenter.swift in Sources */,
@@ -595,7 +624,6 @@
 				45EE9E892155C11A0091230C /* RestrantInfoCell.swift in Sources */,
 				45EE9E6B2155417B0091230C /* AreaSeachViewDatasource.swift in Sources */,
 				45EE9E8121554E0C0091230C /* AreaData.swift in Sources */,
-				4537432321577BAC00C00C0E /* ViewControllerManager.swift in Sources */,
 				45EE9E8621555ED40091230C /* RequestOption.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

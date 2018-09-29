@@ -16,9 +16,9 @@ struct AreaData: Codable {
 }
 
 struct AreaInfo: Codable {
-    let code: String
-    let name: String
-    let pref: Pref
+    var code = ""
+    var name = ""
+    var pref = Pref() // 持ちプロパティに初期値があるからこれでいける
     private enum CodingKeys: String, CodingKey {
         case code = "areacode_l"
         case name = "areaname_l"
@@ -27,8 +27,8 @@ struct AreaInfo: Codable {
 }
 
 struct Pref: Codable {
-    let code: String
-    let name: String
+    var code = ""
+    var name = ""
     private enum CodingKeys: String, CodingKey {
         case code = "pref_code"
         case name = "pref_name"
