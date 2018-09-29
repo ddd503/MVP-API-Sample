@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        /// 初回表示画面を動的に設定（条件によって表示画面を変えるなど）
+        /// 初回表示画面を動的に設定（条件によって表示画面を変えるなど、plistの後に呼ばれるため起動画面は上書きする形となる）
         setRootVC(vc: ViewControllerBuilder.buildAreaSeachVC())
         return true
     }
