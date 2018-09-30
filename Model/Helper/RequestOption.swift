@@ -12,17 +12,17 @@ import Keys
 private let apiAccessKey = MVPAPISampleXcodeprojKeys().gurunaviApiKey
 private let baseURL = "https://api.gnavi.co.jp/"
 // 一度に取得するレコード数
-private let getRecordCount = 50
+let defaultRecordCount = 50
 
 enum RequestOption: URLRequestConvertible {
-    case searchRestrantAPI(areaCode: String, offsetPageCount: Int)
+    case searchRestrantAPI(areaCode: String, offsetPageCount: Int, recordCount: Int)
     
     func asURLRequest() throws -> URLRequest {
         
         let (path, method, parameters): (String, HTTPMethod, [String: Any]) = {
             switch self {
-            case .searchRestrantAPI(let areaCode, let offsetPageCount):
-                return ("RestSearchAPI/v3/", .get, searchParameters(areaCode: areaCode, offsetPageCount: offsetPageCount))
+            case .searchRestrantAPI(let areaCode, let offsetPageCount, let recordCount):
+                return ("RestSearchAPI/v3/", .get, searchParameters(areaCode: areaCode, offsetPageCount: offsetPageCount, recordCount: recordCount))
             }
         }()
         
@@ -36,11 +36,11 @@ enum RequestOption: URLRequestConvertible {
         
     }
     
-    private func searchParameters(areaCode: String, offsetPageCount: Int) -> [String: Any] {
+    private func searchParameters(areaCode: String, offsetPageCount: Int, recordCount: Int) -> [String: Any] {
         return [
             "keyid": apiAccessKey,
             "areacode_l": areaCode,
-            "hit_per_page": getRecordCount,
+            "hit_per_page": recordCount,
             "offset_page": offsetPageCount
         ]
     }

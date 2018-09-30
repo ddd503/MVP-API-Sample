@@ -13,7 +13,6 @@
 		45173923215FA165005E0B79 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45173921215FA165005E0B79 /* NVActivityIndicatorView.framework */; };
 		45173924215FA165005E0B79 /* NVActivityIndicatorViewAppExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45173922215FA165005E0B79 /* NVActivityIndicatorViewAppExtension.framework */; };
 		4517393E215FD7CF005E0B79 /* Model.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45173935215FD7CE005E0B79 /* Model.framework */; };
-		45173945215FD7CF005E0B79 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45173944215FD7CF005E0B79 /* ModelTests.swift */; };
 		45173947215FD7CF005E0B79 /* Model.h in Headers */ = {isa = PBXBuildFile; fileRef = 45173937215FD7CE005E0B79 /* Model.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4517394A215FD7CF005E0B79 /* Model.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45173935215FD7CE005E0B79 /* Model.framework */; };
 		4517394B215FD7CF005E0B79 /* Model.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 45173935215FD7CE005E0B79 /* Model.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -25,13 +24,15 @@
 		4517396221608BE9005E0B79 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517396121608BE9005E0B79 /* APIClient.swift */; };
 		4517396421608BFB005E0B79 /* RequestOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517396321608BFB005E0B79 /* RequestOption.swift */; };
 		451739712160B653005E0B79 /* Keys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 451739702160B653005E0B79 /* Keys.framework */; };
+		451739762160C9B4005E0B79 /* Error+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451739752160C9B4005E0B79 /* Error+Helper.swift */; };
+		4517397F2160EAF6005E0B79 /* area_test.json in Resources */ = {isa = PBXBuildFile; fileRef = 4517397E2160EAF6005E0B79 /* area_test.json */; };
+		451739812160EDE6005E0B79 /* AreaSeachViewDatasourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451739802160EDE6005E0B79 /* AreaSeachViewDatasourceTest.swift */; };
+		451739832160FD7A005E0B79 /* RestrantListDatasourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451739822160FD7A005E0B79 /* RestrantListDatasourceTest.swift */; };
 		4537431921564D7600C00C0E /* ReloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537431721564D7600C00C0E /* ReloadView.swift */; };
 		4537431A21564D7600C00C0E /* ReloadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4537431821564D7600C00C0E /* ReloadView.xib */; };
 		4537431C21574A8700C00C0E /* Int+Grouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537431B21574A8700C00C0E /* Int+Grouping.swift */; };
 		4537432521577C6E00C00C0E /* UIAlertController+Present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537432421577C6E00C00C0E /* UIAlertController+Present.swift */; };
-		4537432C2157993C00C00C0E /* AreaSeachViewDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537432B2157993C00C00C0E /* AreaSeachViewDataSourceTest.swift */; };
 		4537432F2157A6F800C00C0E /* AreaSearchPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537432E2157A6F800C00C0E /* AreaSearchPresenterTest.swift */; };
-		45BC128C21580D9500CF5450 /* RestrantListDatasourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BC128B21580D9500CF5450 /* RestrantListDatasourceTest.swift */; };
 		45BC128E21580DE200CF5450 /* APIClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BC128D21580DE200CF5450 /* APIClientTest.swift */; };
 		45BC1290215893C500CF5450 /* RestrantListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BC128F215893C500CF5450 /* RestrantListPresenterTest.swift */; };
 		45EE9E3A21553E510091230C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EE9E3921553E510091230C /* AppDelegate.swift */; };
@@ -108,7 +109,6 @@
 		45173937215FD7CE005E0B79 /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		45173938215FD7CE005E0B79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4517393D215FD7CE005E0B79 /* ModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		45173944215FD7CF005E0B79 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		45173946215FD7CF005E0B79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45173956215FDD8D005E0B79 /* AreaSeachViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSeachViewDatasource.swift; sourceTree = "<group>"; };
 		45173958215FDDFC005E0B79 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -120,14 +120,16 @@
 		4517396721608C99005E0B79 /* Keys.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Keys.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4517396E2160B45D005E0B79 /* Pods_MVP_API_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MVP_API_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		451739702160B653005E0B79 /* Keys.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Keys.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		451739752160C9B4005E0B79 /* Error+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Helper.swift"; sourceTree = "<group>"; };
+		4517397E2160EAF6005E0B79 /* area_test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = area_test.json; sourceTree = "<group>"; };
+		451739802160EDE6005E0B79 /* AreaSeachViewDatasourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSeachViewDatasourceTest.swift; sourceTree = "<group>"; };
+		451739822160FD7A005E0B79 /* RestrantListDatasourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrantListDatasourceTest.swift; sourceTree = "<group>"; };
 		4537431721564D7600C00C0E /* ReloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadView.swift; sourceTree = "<group>"; };
 		4537431821564D7600C00C0E /* ReloadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReloadView.xib; sourceTree = "<group>"; };
 		4537431B21574A8700C00C0E /* Int+Grouping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Grouping.swift"; sourceTree = "<group>"; };
 		4537432421577C6E00C00C0E /* UIAlertController+Present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Present.swift"; sourceTree = "<group>"; };
 		4537432A2157993B00C00C0E /* MVP-API-SampleTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MVP-API-SampleTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		4537432B2157993C00C00C0E /* AreaSeachViewDataSourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSeachViewDataSourceTest.swift; sourceTree = "<group>"; };
 		4537432E2157A6F800C00C0E /* AreaSearchPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSearchPresenterTest.swift; sourceTree = "<group>"; };
-		45BC128B21580D9500CF5450 /* RestrantListDatasourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrantListDatasourceTest.swift; sourceTree = "<group>"; };
 		45BC128D21580DE200CF5450 /* APIClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTest.swift; sourceTree = "<group>"; };
 		45BC128F215893C500CF5450 /* RestrantListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrantListPresenterTest.swift; sourceTree = "<group>"; };
 		45EE9E3621553E510091230C /* MVP-API-Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVP-API-Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,7 +283,10 @@
 		45173943215FD7CF005E0B79 /* ModelTests */ = {
 			isa = PBXGroup;
 			children = (
-				45173944215FD7CF005E0B79 /* ModelTests.swift */,
+				451739742160C714005E0B79 /* AreaSeachVC */,
+				451739732160C711005E0B79 /* RestrantListVC */,
+				451739722160C70E005E0B79 /* Helper */,
+				4517397D2160EAE5005E0B79 /* Resource */,
 				45173946215FD7CF005E0B79 /* Info.plist */,
 			);
 			path = ModelTests;
@@ -334,6 +339,7 @@
 			children = (
 				4517396121608BE9005E0B79 /* APIClient.swift */,
 				4517396321608BFB005E0B79 /* RequestOption.swift */,
+				451739752160C9B4005E0B79 /* Error+Helper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -362,6 +368,38 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		451739722160C70E005E0B79 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				45BC128D21580DE200CF5450 /* APIClientTest.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		451739732160C711005E0B79 /* RestrantListVC */ = {
+			isa = PBXGroup;
+			children = (
+				451739822160FD7A005E0B79 /* RestrantListDatasourceTest.swift */,
+			);
+			path = RestrantListVC;
+			sourceTree = "<group>";
+		};
+		451739742160C714005E0B79 /* AreaSeachVC */ = {
+			isa = PBXGroup;
+			children = (
+				451739802160EDE6005E0B79 /* AreaSeachViewDatasourceTest.swift */,
+			);
+			path = AreaSeachVC;
+			sourceTree = "<group>";
+		};
+		4517397D2160EAE5005E0B79 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				4517397E2160EAF6005E0B79 /* area_test.json */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		4536C01B21594C9E0063709E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,7 +418,6 @@
 		453743262157981300C00C0E /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				45BC128D21580DE200CF5450 /* APIClientTest.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -388,7 +425,6 @@
 		453743272157981800C00C0E /* RestrantListVC */ = {
 			isa = PBXGroup;
 			children = (
-				453743332157FD7A00C00C0E /* Model */,
 				453743322157FD7700C00C0E /* Presenter */,
 				4536C01C21594CB10063709E /* View */,
 			);
@@ -398,19 +434,10 @@
 		453743282157982300C00C0E /* AreaSearchVC */ = {
 			isa = PBXGroup;
 			children = (
-				453743292157989300C00C0E /* Model */,
 				4537432D2157A6D200C00C0E /* Presenter */,
 				4536C01B21594C9E0063709E /* View */,
 			);
 			path = AreaSearchVC;
-			sourceTree = "<group>";
-		};
-		453743292157989300C00C0E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				4537432B2157993C00C00C0E /* AreaSeachViewDataSourceTest.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		4537432D2157A6D200C00C0E /* Presenter */ = {
@@ -427,14 +454,6 @@
 				45BC128F215893C500CF5450 /* RestrantListPresenterTest.swift */,
 			);
 			path = Presenter;
-			sourceTree = "<group>";
-		};
-		453743332157FD7A00C00C0E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				45BC128B21580D9500CF5450 /* RestrantListDatasourceTest.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		45EE9E2D21553E510091230C = {
@@ -643,6 +662,7 @@
 					};
 					4517393C215FD7CE005E0B79 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 						TestTargetID = 45EE9E3521553E510091230C;
 					};
 					45EE9E3521553E510091230C = {
@@ -688,6 +708,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4517397F2160EAF6005E0B79 /* area_test.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,6 +835,7 @@
 				4517395E21608B58005E0B79 /* RestrantListDatasource.swift in Sources */,
 				4517396021608B67005E0B79 /* ResrantData.swift in Sources */,
 				45173959215FDDFC005E0B79 /* AreaData.swift in Sources */,
+				451739762160C9B4005E0B79 /* Error+Helper.swift in Sources */,
 				4517396221608BE9005E0B79 /* APIClient.swift in Sources */,
 				4517396421608BFB005E0B79 /* RequestOption.swift in Sources */,
 				45173957215FDD8D005E0B79 /* AreaSeachViewDatasource.swift in Sources */,
@@ -824,7 +846,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45173945215FD7CF005E0B79 /* ModelTests.swift in Sources */,
+				451739832160FD7A005E0B79 /* RestrantListDatasourceTest.swift in Sources */,
+				451739812160EDE6005E0B79 /* AreaSeachViewDatasourceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,9 +873,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4537432C2157993C00C00C0E /* AreaSeachViewDataSourceTest.swift in Sources */,
 				45BC1290215893C500CF5450 /* RestrantListPresenterTest.swift in Sources */,
-				45BC128C21580D9500CF5450 /* RestrantListDatasourceTest.swift in Sources */,
 				4537432F2157A6F800C00C0E /* AreaSearchPresenterTest.swift in Sources */,
 				45173919215D342C005E0B79 /* AreaSeachViewControllerTest.swift in Sources */,
 				45BC128E21580DE200CF5450 /* APIClientTest.swift in Sources */,
@@ -969,6 +990,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LVR5UQEHBD;
 				INFOPLIST_FILE = ModelTests/Info.plist;
@@ -979,6 +1001,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kawahara.ModelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MVP-API-Sample.app/MVP-API-Sample";
@@ -989,6 +1012,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LVR5UQEHBD;
 				INFOPLIST_FILE = ModelTests/Info.plist;

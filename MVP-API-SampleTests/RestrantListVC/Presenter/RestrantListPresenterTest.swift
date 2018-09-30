@@ -7,6 +7,7 @@
 //
 
 @testable import MVP_API_Sample
+@testable import Model
 import XCTest
 import Model
 

@@ -7,6 +7,7 @@
 //
 
 @testable import MVP_API_Sample
+import Model
 import XCTest
 
 final class AreaSearchPresenterTest: XCTestCase {

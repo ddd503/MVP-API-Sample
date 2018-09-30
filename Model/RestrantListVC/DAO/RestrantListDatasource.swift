@@ -27,7 +27,7 @@ public final class RestrantListDatasource {
     ///   - areaCode: 検索エリアを指定するコード
     ///   - offsetPageCount: 何ページ目のレスポンスを受け取るか
     public func requestDatasource(areaCode: String, offsetPageCount: Int, isAddRequest: Bool) {
-        APIClient.request(option: .searchRestrantAPI(areaCode: areaCode, offsetPageCount: offsetPageCount)) { result in
+        APIClient.request(option: .searchRestrantAPI(areaCode: areaCode, offsetPageCount: offsetPageCount, recordCount: defaultRecordCount)) { result in
             switch result {
             case .success(let data):
                 do {

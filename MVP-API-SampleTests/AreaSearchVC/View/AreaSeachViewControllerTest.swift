@@ -25,14 +25,14 @@ class AreaSeachViewControllerTest: XCTestCase {
    
 }
 
-extension AreaSeachViewControllerTest: AreaListInterface {
-    
-    func reload() {
-        <#code#>
-    }
-    
-    func transitionToRestrantSearchVC(areaInfo: AreaInfo) {
-        <#code#>
-    }
-    
-}
+//extension AreaSeachViewControllerTest: AreaListInterface {
+//    
+//    func reload() {
+//        <#code#>
+//    }
+//    
+//    func transitionToRestrantSearchVC(areaInfo: AreaInfo) {
+//        <#code#>
+//    }
+//    
+//}

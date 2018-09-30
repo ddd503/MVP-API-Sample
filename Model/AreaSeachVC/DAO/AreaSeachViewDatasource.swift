@@ -28,7 +28,7 @@ public final class AreaSearchViewDatasource {
     
     public var delegate: AreaSearchViewDataSourceDelegate?
     
-    /// API通信を行い、マッピングしたレスポンスを返す
+    /// ローカルのJSONファイルからエリアデータを取得し、マッピングしたレスポンスを返す
     public func requestDatasource() {
         guard let filePath = self.getLocalJsonFilePath(fileName: "area") else {
             fatalError("json is not found in main Bundle.")
