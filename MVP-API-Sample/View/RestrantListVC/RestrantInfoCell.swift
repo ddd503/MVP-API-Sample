@@ -6,10 +6,10 @@
 //  Copyright © 2018年 kawaharadai. All rights reserved.
 //
 
-import Kingfisher
 import UIKit
+import Kingfisher
 
-class RestrantInfoCell: UITableViewCell {
+final class RestrantInfoCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var stationLabel: UILabel!
@@ -23,15 +23,9 @@ class RestrantInfoCell: UITableViewCell {
         return String(describing: self)
     }
     
-    func setInfo(info: RestrantInfo) {
-        self.nameLabel.text = info.name
-        self.stationLabel.text = info.access.station
-        self.walkLabel.text = "\(info.access.walkTime)分"
-        self.addressLabel.text = info.address
-        self.telLabel.text = info.tel
-        self.feeLabel.text = "¥\(info.fee.separatorComma)"
-        if let url = URL(string: info.imageUrlString.shopUrlstring) {
-            self.shotImageView.kf.setImage(with: url, placeholder: UIImage(named: "no_image"))
-        }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        shotImageView.image = nil
     }
+    
 }

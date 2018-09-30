@@ -1,8 +1,8 @@
 //
 //  RequestOption.swift
-//  MVP-API-Sample
+//  Model
 //
-//  Created by kawaharadai on 2018/09/22.
+//  Created by kawaharadai on 2018/09/30.
 //  Copyright © 2018年 kawaharadai. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import Keys
 
 private let apiAccessKey = MVPAPISampleXcodeprojKeys().gurunaviApiKey
 private let baseURL = "https://api.gnavi.co.jp/"
- // 一度に取得するレコード数
+// 一度に取得するレコード数
 private let getRecordCount = 50
 
 enum RequestOption: URLRequestConvertible {
@@ -46,4 +46,3 @@ enum RequestOption: URLRequestConvertible {
     }
     
 }
-

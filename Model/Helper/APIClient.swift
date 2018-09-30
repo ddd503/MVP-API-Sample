@@ -1,8 +1,8 @@
 //
 //  APIClient.swift
-//  MVP-API-Sample
+//  Model
 //
-//  Created by kawaharadai on 2018/09/22.
+//  Created by kawaharadai on 2018/09/30.
 //  Copyright © 2018年 kawaharadai. All rights reserved.
 //
 

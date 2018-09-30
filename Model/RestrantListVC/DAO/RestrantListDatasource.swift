@@ -1,15 +1,15 @@
 //
 //  RestrantListDatasource.swift
-//  MVP-API-Sample
+//  Model
 //
-//  Created by kawaharadai on 2018/09/22.
+//  Created by kawaharadai on 2018/09/30.
 //  Copyright © 2018年 kawaharadai. All rights reserved.
 //
 
 import Alamofire
 
 // レストラン検索APIへの通信結果
-protocol RestrantListDatasourceDelegate: class {
+public protocol RestrantListDatasourceDelegate: class {
     func receivedDatasource(data: ResrantData) // データソース取得成功
     func receivedAdditionalDatasource(data: ResrantData) // データソース追加取得成功
     func receivedErrorResponse(error: Error, isAddRequest: Bool) // データソース取得失敗
@@ -17,16 +17,18 @@ protocol RestrantListDatasourceDelegate: class {
     func decodeError(error: Error, isAddRequest: Bool) // 受け取ったレスポンスデータのパースに失敗
 }
 
-final class RestrantListDatasource {
+public final class RestrantListDatasource {
+    /// 外部からinitできるようアクセスレベルをデフォルトからpublicに変更（必須）
+    public init() {}
     
-    var delegate: RestrantListDatasourceDelegate?
+    public var delegate: RestrantListDatasourceDelegate?
     
     /// レストラン検索APIを叩き、レストラン情報を取得する
     ///
     /// - Parameters:
     ///   - areaCode: 検索エリアを指定するコード
     ///   - offsetPageCount: 何ページ目のレスポンスを受け取るか
-    func requestDatasource(areaCode: String, offsetPageCount: Int, isAddRequest: Bool) {
+    public func requestDatasource(areaCode: String, offsetPageCount: Int, isAddRequest: Bool) {
         guard onLineNetwork() else {
             self.delegate?.offlineError(isAddRequest: isAddRequest)
             return

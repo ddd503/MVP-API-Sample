@@ -43,8 +43,8 @@ extension AreaSeachViewController: AreaListInterface {
     /// レストラン一覧を取得する画面へ遷移する
     ///
     /// - Parameter areaInfo: レストラン一覧取得に必要な情報
-    func transitionToRestrantSearchVC(areaInfo: AreaInfo) {
-        self.navigationController?.pushViewController(ViewControllerBuilder.buildRestrantListVC(areaInfo: areaInfo), animated: true)
+    func transitionToRestrantSearchVC(restVC: RestrantListViewController) {
+        self.navigationController?.pushViewController(restVC, animated: true)
     }
     
 }

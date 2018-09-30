@@ -8,6 +8,7 @@
 
 @testable import MVP_API_Sample
 import XCTest
+import Model
 
 final class RestrantListPresenterTest: XCTestCase, RestrantListPresenterInterface {
    

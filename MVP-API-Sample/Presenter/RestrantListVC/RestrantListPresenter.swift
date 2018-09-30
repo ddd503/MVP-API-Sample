@@ -7,6 +7,7 @@
 //
 
 import CoreGraphics
+import Model
 
 protocol RestrantListInterface: class {
     /// 画面更新
@@ -152,6 +153,24 @@ final class RestrantListPresenter: BasePresenter, RestrantListPresenterInterface
     /// - Parameter isHidden: true 非表示, false 表示
     private func updateAddRequestIndicatorStatus(isHidden: Bool) {
         self.interface?.updateAdditionalIndicator(isHidden: isHidden)
+    }
+    
+    /// セルにモデルクラスの情報を引き渡す
+    ///
+    /// - Parameters:
+    ///   - cell: 表示するセル
+    ///   - indexPath: セルのindexPath
+    func setupTableViewCell(cell: RestrantInfoCell, indexPath: IndexPath) {
+        cell.nameLabel.text = restrantList[indexPath.row].name
+        cell.stationLabel.text = restrantList[indexPath.row].access.station
+        cell.walkLabel.text = "\(restrantList[indexPath.row].access.walkTime)分"
+        cell.addressLabel.text = restrantList[indexPath.row].address
+        cell.telLabel.text = restrantList[indexPath.row].tel
+        cell.feeLabel.text = "¥\(restrantList[indexPath.row].fee.separatorComma)"
+        /// セル側でKingfisherをimportしている
+        if let url = URL(string: restrantList[indexPath.row].imageUrlString.shopUrlstring) {
+            cell.shotImageView.kf.setImage(with: url, placeholder: UIImage(named: "no_image"))
+        }
     }
     
 }

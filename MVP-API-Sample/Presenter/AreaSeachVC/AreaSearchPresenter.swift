@@ -6,13 +6,15 @@
 //  Copyright © 2018年 kawaharadai. All rights reserved.
 //
 
+import Model
+
 protocol AreaListInterface: class {
     /// 画面更新
     func reload()
     /// レストラン検索ページに遷移する
     ///
-    /// - Parameter areaInfo: レストラン検索を行うエリア
-    func transitionToRestrantSearchVC(areaInfo: AreaInfo)
+    /// - Parameter restVC: レストラン検索結果を表示するVC
+    func transitionToRestrantSearchVC(restVC: RestrantListViewController)
 }
 
 final class AreaSearchPresenter: BasePresenter {
@@ -46,7 +48,7 @@ final class AreaSearchPresenter: BasePresenter {
     ///
     /// - Parameter row: タップしたセルのindex
     func didSelectAreaData(row: Int) {
-        self.interface?.transitionToRestrantSearchVC(areaInfo: self.areaList[row])
+        self.interface?.transitionToRestrantSearchVC(restVC: ViewControllerBuilder.buildRestrantListVC(areaSearchPresenter: self, indexPathRow: row))
     }
     
 }

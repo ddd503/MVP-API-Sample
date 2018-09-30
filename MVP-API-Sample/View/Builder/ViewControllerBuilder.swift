@@ -15,18 +15,20 @@ final class ViewControllerBuilder {
         let vcName = "AreaSeachViewController"
         let vc = UIStoryboard(name: vcName, bundle: Bundle.main).instantiateViewController(withIdentifier: vcName) as! AreaSeachViewController
         vc.presenter = AreaSearchPresenter()
+        // PresenterクラスにViewクラスを参照させる
         vc.presenter.applyInterface(view: vc)
         return vc
     }
     
     /// レストラン一覧画面
     /// - Parameter areaInfo: 検索するエリア情報
-    static func buildRestrantListVC(areaInfo: AreaInfo) -> RestrantListViewController {
+    static func buildRestrantListVC(areaSearchPresenter: AreaSearchPresenter, indexPathRow: Int) -> RestrantListViewController {
         let vcName = "RestrantListViewController"
         let vc = UIStoryboard(name: vcName, bundle: Bundle.main).instantiateViewController(withIdentifier: vcName) as! RestrantListViewController
         vc.presenter = RestrantListPresenter()
+        // PresenterクラスにViewクラスを参照させる
         vc.presenter.applyInterface(view: vc)
-        vc.presenter.areaInfo = areaInfo
+        vc.presenter.areaInfo = areaSearchPresenter.areaList[indexPathRow]
         return vc
     }
     

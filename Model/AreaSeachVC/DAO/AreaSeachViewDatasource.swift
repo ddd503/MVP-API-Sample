@@ -1,14 +1,14 @@
 //
-//  AreasearchViewDataSource.swift
-//  MVP-API-Sample
+//  AreaSeachViewDatasource.swift
+//  Model
 //
-//  Created by kawaharadai on 2018/09/22.
+//  Created by kawaharadai on 2018/09/30.
 //  Copyright © 2018年 kawaharadai. All rights reserved.
 //
 
 import Foundation
 
-protocol AreaSearchViewDataSourceDelegate: class {
+public protocol AreaSearchViewDataSourceDelegate: class {
     /// 取得したエリアデータを返す
     ///
     /// - Parameter data: 取得したエリアデータ
@@ -22,12 +22,14 @@ protocol AreaSearchViewDataSourceDelegate: class {
     func getTargetAreaList(areaData: AreaData, areaName: String) -> [AreaInfo]
 }
 
-final class AreaSearchViewDatasource {
+public final class AreaSearchViewDatasource {
+    /// 外部からinitできるようアクセスレベルをデフォルトからpublicに変更（必須）
+    public init() {}
     
-    var delegate: AreaSearchViewDataSourceDelegate?
+    public var delegate: AreaSearchViewDataSourceDelegate?
     
     /// API通信を行い、マッピングしたレスポンスを返す
-    func requestDatasource() {
+    public func requestDatasource() {
         guard let filePath = self.getLocalJsonFilePath(fileName: "area") else {
             fatalError("json is not found in main Bundle.")
         }
