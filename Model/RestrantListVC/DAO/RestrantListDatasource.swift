@@ -6,8 +6,6 @@
 //  Copyright © 2018年 kawaharadai. All rights reserved.
 //
 
-import Alamofire
-
 // レストラン検索APIへの通信結果
 public protocol RestrantListDatasourceDelegate: class {
     func receivedDatasource(data: ResrantData) // データソース取得成功
@@ -29,10 +27,6 @@ public final class RestrantListDatasource {
     ///   - areaCode: 検索エリアを指定するコード
     ///   - offsetPageCount: 何ページ目のレスポンスを受け取るか
     public func requestDatasource(areaCode: String, offsetPageCount: Int, isAddRequest: Bool) {
-        guard onLineNetwork() else {
-            self.delegate?.offlineError(isAddRequest: isAddRequest)
-            return
-        }
         APIClient.request(option: .searchRestrantAPI(areaCode: areaCode, offsetPageCount: offsetPageCount)) { result in
             switch result {
             case .success(let data):
@@ -49,19 +43,10 @@ public final class RestrantListDatasource {
                 }
             case .failure(let error):
                 self.delegate?.receivedErrorResponse(error: error, isAddRequest: isAddRequest)
+            case .offline:
+                self.delegate?.offlineError(isAddRequest: isAddRequest)
             }
         }
-    }
-    
-    /// 通信状態を返す
-    ///
-    /// - Returns: true: オンライン, false: オフライン
-    private func onLineNetwork() -> Bool {
-        if let reachabilityManager = NetworkReachabilityManager() {
-            reachabilityManager.startListening()
-            return reachabilityManager.isReachable
-        }
-        return false
     }
     
 }

@@ -11,10 +11,21 @@ import Alamofire
 enum APIRequestResult {
     case success(Data)
     case failure(Error)
+    case offline // 通信自体を行わない
 }
 
 final class APIClient {
+    
+    /// API通信を行う
+    ///
+    /// - Parameters:
+    ///   - option: リクエストするパラメータなど
+    ///   - completionHandler: 実行結果を返す
     static func request(option: RequestOption, completionHandler: @escaping (APIRequestResult) -> ()) {
+        guard onLineNetwork() else {
+            completionHandler(.offline)
+            return
+        }
         Alamofire.request(option).responseData { response in
             switch response.result {
             case .success(let value):
@@ -24,4 +35,16 @@ final class APIClient {
             }
         }
     }
+    
+    /// 通信状態を返す
+    ///
+    /// - Returns: true: オンライン, false: オフライン
+    static func onLineNetwork() -> Bool {
+        if let reachabilityManager = NetworkReachabilityManager() {
+            reachabilityManager.startListening()
+            return reachabilityManager.isReachable
+        }
+        return false
+    }
+    
 }
