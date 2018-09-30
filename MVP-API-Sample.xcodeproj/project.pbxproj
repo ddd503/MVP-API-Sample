@@ -28,6 +28,7 @@
 		4517397F2160EAF6005E0B79 /* area_test.json in Resources */ = {isa = PBXBuildFile; fileRef = 4517397E2160EAF6005E0B79 /* area_test.json */; };
 		451739812160EDE6005E0B79 /* AreaSeachViewDatasourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451739802160EDE6005E0B79 /* AreaSeachViewDatasourceTest.swift */; };
 		451739832160FD7A005E0B79 /* RestrantListDatasourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451739822160FD7A005E0B79 /* RestrantListDatasourceTest.swift */; };
+		4517398D21612E8C005E0B79 /* BasePresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517398C21612E8C005E0B79 /* BasePresenterTest.swift */; };
 		4537431921564D7600C00C0E /* ReloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537431721564D7600C00C0E /* ReloadView.swift */; };
 		4537431A21564D7600C00C0E /* ReloadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4537431821564D7600C00C0E /* ReloadView.xib */; };
 		4537431C21574A8700C00C0E /* Int+Grouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537431B21574A8700C00C0E /* Int+Grouping.swift */; };
@@ -124,6 +125,7 @@
 		4517397E2160EAF6005E0B79 /* area_test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = area_test.json; sourceTree = "<group>"; };
 		451739802160EDE6005E0B79 /* AreaSeachViewDatasourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSeachViewDatasourceTest.swift; sourceTree = "<group>"; };
 		451739822160FD7A005E0B79 /* RestrantListDatasourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrantListDatasourceTest.swift; sourceTree = "<group>"; };
+		4517398C21612E8C005E0B79 /* BasePresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenterTest.swift; sourceTree = "<group>"; };
 		4537431721564D7600C00C0E /* ReloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadView.swift; sourceTree = "<group>"; };
 		4537431821564D7600C00C0E /* ReloadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReloadView.xib; sourceTree = "<group>"; };
 		4537431B21574A8700C00C0E /* Int+Grouping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Grouping.swift"; sourceTree = "<group>"; };
@@ -400,19 +402,54 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		4536C01B21594C9E0063709E /* View */ = {
+		4517398621612CF3005E0B79 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				45173918215D342C005E0B79 /* AreaSeachViewControllerTest.swift */,
+				4517398B21612D10005E0B79 /* AreaSearchVC */,
+				4517398A21612D0D005E0B79 /* RestrantListVC */,
+				4517398C21612E8C005E0B79 /* BasePresenterTest.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4517398721612CF6005E0B79 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4517398921612D0B005E0B79 /* AreaSearchVC */,
+				4517398821612D07005E0B79 /* RestrantListVC */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		4536C01C21594CB10063709E /* View */ = {
+		4517398821612D07005E0B79 /* RestrantListVC */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = View;
+			path = RestrantListVC;
+			sourceTree = "<group>";
+		};
+		4517398921612D0B005E0B79 /* AreaSearchVC */ = {
+			isa = PBXGroup;
+			children = (
+				45173918215D342C005E0B79 /* AreaSeachViewControllerTest.swift */,
+			);
+			path = AreaSearchVC;
+			sourceTree = "<group>";
+		};
+		4517398A21612D0D005E0B79 /* RestrantListVC */ = {
+			isa = PBXGroup;
+			children = (
+				45BC128F215893C500CF5450 /* RestrantListPresenterTest.swift */,
+			);
+			path = RestrantListVC;
+			sourceTree = "<group>";
+		};
+		4517398B21612D10005E0B79 /* AreaSearchVC */ = {
+			isa = PBXGroup;
+			children = (
+				4537432E2157A6F800C00C0E /* AreaSearchPresenterTest.swift */,
+			);
+			path = AreaSearchVC;
 			sourceTree = "<group>";
 		};
 		453743262157981300C00C0E /* Helper */ = {
@@ -420,40 +457,6 @@
 			children = (
 			);
 			path = Helper;
-			sourceTree = "<group>";
-		};
-		453743272157981800C00C0E /* RestrantListVC */ = {
-			isa = PBXGroup;
-			children = (
-				453743322157FD7700C00C0E /* Presenter */,
-				4536C01C21594CB10063709E /* View */,
-			);
-			path = RestrantListVC;
-			sourceTree = "<group>";
-		};
-		453743282157982300C00C0E /* AreaSearchVC */ = {
-			isa = PBXGroup;
-			children = (
-				4537432D2157A6D200C00C0E /* Presenter */,
-				4536C01B21594C9E0063709E /* View */,
-			);
-			path = AreaSearchVC;
-			sourceTree = "<group>";
-		};
-		4537432D2157A6D200C00C0E /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				4537432E2157A6F800C00C0E /* AreaSearchPresenterTest.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		453743322157FD7700C00C0E /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				45BC128F215893C500CF5450 /* RestrantListPresenterTest.swift */,
-			);
-			path = Presenter;
 			sourceTree = "<group>";
 		};
 		45EE9E2D21553E510091230C = {
@@ -494,8 +497,8 @@
 		45EE9E4D21553E530091230C /* MVP-API-SampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				453743282157982300C00C0E /* AreaSearchVC */,
-				453743272157981800C00C0E /* RestrantListVC */,
+				4517398721612CF6005E0B79 /* View */,
+				4517398621612CF3005E0B79 /* Presenter */,
 				453743262157981300C00C0E /* Helper */,
 				45EE9E5021553E530091230C /* Info.plist */,
 				4537432A2157993B00C00C0E /* MVP-API-SampleTests-Bridging-Header.h */,
@@ -877,6 +880,7 @@
 				4537432F2157A6F800C00C0E /* AreaSearchPresenterTest.swift in Sources */,
 				45173919215D342C005E0B79 /* AreaSeachViewControllerTest.swift in Sources */,
 				45BC128E21580DE200CF5450 /* APIClientTest.swift in Sources */,
+				4517398D21612E8C005E0B79 /* BasePresenterTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

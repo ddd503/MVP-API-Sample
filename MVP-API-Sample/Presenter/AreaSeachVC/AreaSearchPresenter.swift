@@ -51,6 +51,18 @@ final class AreaSearchPresenter: BasePresenter {
         self.interface?.transitionToRestrantSearchVC(restVC: ViewControllerBuilder.buildRestrantListVC(areaSearchPresenter: self, indexPathRow: row))
     }
     
+    /// 表示するエリアデータのみ抽出する
+    ///
+    /// - Parameters:
+    ///   - areaData: 取得したエリアデータ
+    ///   - areaName: 抽出するエリアデータ名
+    /// - Returns: areaNameで絞り込みをかけたAreaInfoの配列
+    private func getTargetAreaList(areaData: AreaData, areaName: String = "東京都") -> [AreaInfo] {
+        return areaData.info.filter {
+            $0.pref.name == areaName
+        }
+    }
+    
 }
 
 extension AreaSearchPresenter: AreaSearchViewDataSourceDelegate {
@@ -58,23 +70,6 @@ extension AreaSearchPresenter: AreaSearchViewDataSourceDelegate {
     func receivedDatasource(data: AreaData) {
         // 狙ったエリアのみ取り出す（東京以外を取り出す場合は引き数で渡す）
         self.areaList.append(contentsOf: getTargetAreaList(areaData: data))
-    }
-    
-}
-
-// デフォルト引数を持たせてみる
-extension AreaSearchViewDataSourceDelegate {
-    
-    /// 表示するエリアデータのみ抽出する
-    ///
-    /// - Parameters:
-    ///   - areaData: 取得したエリアデータ
-    ///   - areaName: 抽出するエリアデータ名
-    /// - Returns: areaNameで絞り込みをかけたAreaInfoの配列
-    func getTargetAreaList(areaData: AreaData, areaName: String = "東京都") -> [AreaInfo] {
-        return areaData.info.filter {
-            $0.pref.name == areaName
-        }
     }
     
 }

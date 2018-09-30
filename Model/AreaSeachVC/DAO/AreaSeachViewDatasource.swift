@@ -8,21 +8,21 @@
 
 import Foundation
 
+// プロパティとして外部からの参照(される)を保持するためpublicで定義(デリゲートパターン)
 public protocol AreaSearchViewDataSourceDelegate: class {
     /// 取得したエリアデータを返す
     ///
     /// - Parameter data: 取得したエリアデータ
     func receivedDatasource(data: AreaData)
-    /// エリアデータからエリア名で絞り込みをかける
-    ///
-    /// - Parameters:
-    ///   - areaData: 全てのエリアデータ
-    ///   - areaName: 特定のエリア名
-    /// - Returns: 絞り込みをかけたエリアデータ
-    func getTargetAreaList(areaData: AreaData, areaName: String) -> [AreaInfo]
 }
 
-public final class AreaSearchViewDatasource {
+// テスト用に切り出し
+protocol AreaSearchViewDatasourceInterface: class {
+    /// データソースを取得する
+    func requestDatasource()
+}
+
+public final class AreaSearchViewDatasource: AreaSearchViewDatasourceInterface {
     /// 外部からinitできるようアクセスレベルをデフォルトからpublicに変更（必須）
     public init() {}
     

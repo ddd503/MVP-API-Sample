@@ -9,13 +9,12 @@
 @testable import MVP_API_Sample
 @testable import Model
 import XCTest
-import Model
 
 final class RestrantListPresenterTest: XCTestCase, RestrantListPresenterInterface {
-   
-   private let datasource = RestrantListDatasource()
+    
+    private let datasource = RestrantListDatasource()
     private var restrantListPresenterExpectation: XCTestExpectation?
-
+    
     override func setUp() {
         super.setUp()
     }
@@ -91,6 +90,23 @@ extension RestrantListPresenterTest: RestrantListDatasourceDelegate {
     
     func decodeError(error: Error, isAddRequest: Bool) {
         XCTAssert(true)
+    }
+    
+}
+
+final class RestrantListDatasourceMock: RestrantListDatasourceInterface {
+    
+    var delegate: RestrantListDatasourceDelegate?
+    
+    func requestDatasource(areaCode: String,
+                           offsetPageCount: Int,
+                           isAddRequest: Bool) {
+        guard let delegate = self.delegate else {
+            XCTFail("RestrantListDatasourceDelegateが設定されていない")
+            return
+        }
+        // ダミーの通信結果を返す
+        delegate.offlineError(isAddRequest: true)
     }
     
 }

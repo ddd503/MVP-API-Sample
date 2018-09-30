@@ -7,7 +7,7 @@
 //
 
 protocol BasePresenter: class {
-    // それぞれの準拠元で柔軟的に型を決定できる値
+    // それぞれの準拠元で柔軟的に型を決定できる値（protcol版ジェネリクス）
     associatedtype ViewObject
     // Presenterクラス側でViewクラスを保持する用propatie
     // デフォルト実装で、自動的に渡されたViewクラスをPresenterクラスのinterface変数(protcol)にセットする
@@ -26,7 +26,6 @@ extension BasePresenter {
     func applyInterface(view: ViewObject) {
         interface = view
     }
-    
     /// presenterはdeinit時にこれを呼んで自身が持つViewクラスインスタンスを破棄する（相互参照でVとMが消えないことの防止）
     func destroyInterface() {
         interface = nil
