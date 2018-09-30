@@ -11,7 +11,7 @@ import Alamofire
 enum APIRequestResult {
     case success(Data)
     case failure(Error)
-    case offline // 通信自体を行わない
+    case doNotRequest // オフラインのため通信自体を行わない
 }
 
 final class APIClient {
@@ -23,7 +23,7 @@ final class APIClient {
     ///   - completionHandler: 実行結果を返す
     static func request(option: RequestOption, completionHandler: @escaping (APIRequestResult) -> ()) {
         guard onLineNetwork() else {
-            completionHandler(.offline)
+            completionHandler(.doNotRequest)
             return
         }
         Alamofire.request(option).responseData { response in

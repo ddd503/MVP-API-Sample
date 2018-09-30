@@ -39,11 +39,16 @@ public final class RestrantListDatasource {
                         self.delegate?.receivedDatasource(data: restrantData)
                     }
                 } catch let error {
+                    if error.isOffline || error.isTimeout {
+                        // 通信した結果、オフラインorタイムアウトが返ってきた
+                        self.delegate?.offlineError(isAddRequest: isAddRequest)
+                        return
+                    }
                     self.delegate?.decodeError(error: error, isAddRequest: isAddRequest)
                 }
             case .failure(let error):
                 self.delegate?.receivedErrorResponse(error: error, isAddRequest: isAddRequest)
-            case .offline:
+            case .doNotRequest:
                 self.delegate?.offlineError(isAddRequest: isAddRequest)
             }
         }
