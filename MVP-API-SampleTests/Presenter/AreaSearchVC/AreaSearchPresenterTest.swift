@@ -12,8 +12,8 @@ import XCTest
 
 final class AreaSearchPresenterTest: XCTestCase {
     
-    private var areaSearchPresenterExpectation: XCTestExpectation?
     private let datasource = AreaSeachViewDatasourceMock()
+    private var areaSearchPresenterExpectation: XCTestExpectation?
 
     func test_Modelからのデリゲートを受けるテスト() {
         self.areaSearchPresenterExpectation = self.expectation(description: "AreasearchViewDataSourceDelegateのハンドリング")

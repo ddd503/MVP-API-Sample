@@ -10,10 +10,10 @@
 import Foundation
 
 public struct ResrantData: Codable {
-    public let info: [RestrantInfo]
-    public let totalHitCount: Int
-    public let pageOffset: Int
-    public let hitPage: Int
+    public var info: [RestrantInfo] = []
+    public var totalHitCount = 0
+    public var pageOffset = 0
+    public var hitPage = 0
     private enum CodingKeys: String, CodingKey {
         case info = "rest"
         case totalHitCount = "total_hit_count"
@@ -23,10 +23,10 @@ public struct ResrantData: Codable {
 }
 
 public struct RestrantInfo: Codable {
-    public let name: String
-    public let address: String
-    public let tel: String
-    public let fee: Int
+    public var name = ""
+    public var address = ""
+    public var tel = ""
+    public var fee = 0
     public let imageUrlString: ImageUrl
     public let access: Access
     private enum CodingKeys: String, CodingKey {
@@ -40,15 +40,15 @@ public struct RestrantInfo: Codable {
 }
 
 public struct ImageUrl: Codable {
-    public let shopUrlstring: String
+    public var shopUrlstring = ""
     private enum CodingKeys: String, CodingKey {
         case shopUrlstring = "shop_image1"
     }
 }
 
 public struct Access: Codable {
-    public let station: String
-    public let walkTime: String
+    public var station = ""
+    public var walkTime = ""
     private enum CodingKeys: String, CodingKey {
         case station = "station"
         case walkTime = "walk"

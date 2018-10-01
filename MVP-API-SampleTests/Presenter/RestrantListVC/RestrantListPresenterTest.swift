@@ -12,16 +12,8 @@ import XCTest
 
 final class RestrantListPresenterTest: XCTestCase, RestrantListPresenterInterface {
     
-    private let datasource = RestrantListDatasource()
+    private let datasource = RestrantListDatasourceMock()
     private var restrantListPresenterExpectation: XCTestExpectation?
-    
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
     
     func test_テーブルビューが一番下までスクロールされたかどうかを判定するテスト() {
         var offsetY: CGFloat = 110
@@ -50,16 +42,16 @@ final class RestrantListPresenterTest: XCTestCase, RestrantListPresenterInterfac
     }
     
     func test_レストラン検索APIからのレスポンスをハンドリングするテスト() {
-        self.restrantListPresenterExpectation = self.expectation(description: "requestDatasource_firstRequest")
+        self.restrantListPresenterExpectation = self.expectation(description: "RestrantListDatasourceDelegateのハンドリング_初回取得")
         self.datasource.delegate = self
         // 初回表示時のAPIアクセス
         self.datasource.requestDatasource(areaCode: "AREAL2101", offsetPageCount: 1, isAddRequest: false)
-        // 完了宣言後走る
+        // 完了宣言後走る（追加取得してみる）
         self.waitForExpectations(timeout: 10) { [weak self] error in
             if let error = error {
                 XCTFail(error.localizedDescription)
             } else {
-                self?.restrantListPresenterExpectation = self?.expectation(description: "requestDatasource_additionalRequest")
+                self?.restrantListPresenterExpectation = self?.expectation(description: "RestrantListDatasourceDelegateのハンドリング_追加取得")
                 self?.datasource.requestDatasource(areaCode: "AREAL2101", offsetPageCount: 2, isAddRequest: true)
                 self?.waitForExpectations(timeout: 10, handler: nil)
             }
@@ -94,19 +86,27 @@ extension RestrantListPresenterTest: RestrantListDatasourceDelegate {
     
 }
 
+/// Modelクラスのスタブクラス
 final class RestrantListDatasourceMock: RestrantListDatasourceInterface {
     
-    var delegate: RestrantListDatasourceDelegate?
+    weak var delegate: RestrantListDatasourceDelegate?
     
     func requestDatasource(areaCode: String,
                            offsetPageCount: Int,
                            isAddRequest: Bool) {
+        
         guard let delegate = self.delegate else {
             XCTFail("RestrantListDatasourceDelegateが設定されていない")
             return
         }
+        
         // ダミーの通信結果を返す
-        delegate.offlineError(isAddRequest: true)
+        if isAddRequest {
+            delegate.receivedAdditionalDatasource(data: ResrantData())
+        } else {
+            delegate.receivedDatasource(data: ResrantData())
+        }
+        
     }
     
 }
