@@ -106,7 +106,6 @@ extension RestrantListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RestrantInfoCell.identifier, for: indexPath) as? RestrantInfoCell else {
             fatalError("cell is nil")
         }
-//        cell.setInfo(info: self.presenter.restrantList[indexPath.row])
         presenter.setupTableViewCell(cell: cell, indexPath: indexPath)
         return cell
     }
