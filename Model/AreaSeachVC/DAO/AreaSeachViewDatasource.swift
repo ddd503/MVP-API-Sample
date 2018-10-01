@@ -26,7 +26,8 @@ public final class AreaSearchViewDatasource: AreaSearchViewDatasourceInterface {
     /// 外部からinitできるようアクセスレベルをデフォルトからpublicに変更（必須）
     public init() {}
     
-    public var delegate: AreaSearchViewDataSourceDelegate?
+    /// Presenterクラスを保持
+    public weak var delegate: AreaSearchViewDataSourceDelegate?
     
     /// ローカルのJSONファイルからエリアデータを取得し、マッピングしたレスポンスを返す
     public func requestDatasource() {

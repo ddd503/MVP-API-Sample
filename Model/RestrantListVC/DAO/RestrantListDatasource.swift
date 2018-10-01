@@ -31,7 +31,8 @@ public final class RestrantListDatasource: RestrantListDatasourceInterface {
     /// 外部からinitできるようアクセスレベルをデフォルトからpublicに変更（必須）
     public init() {}
     
-    public var delegate: RestrantListDatasourceDelegate?
+    /// Presenterクラスを保持
+    public weak var delegate: RestrantListDatasourceDelegate?
     
     public func requestDatasource(areaCode: String, offsetPageCount: Int, isAddRequest: Bool) {
         APIClient.request(option: .searchRestrantAPI(areaCode: areaCode, offsetPageCount: offsetPageCount, recordCount: defaultRecordCount)) { result in
